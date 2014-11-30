@@ -43,6 +43,7 @@ class OMX_MediaProcessorElement : public QQuickItem
     Q_PROPERTY(bool autoPlay READ autoPlay WRITE setAutoPlay)
     Q_PROPERTY(long streamLength READ streamLength)
     Q_PROPERTY(long streamPosition READ streamPosition)
+    Q_PROPERTY(int audioStream READ getAudioStream WRITE setAudioStream)
 public:
     explicit OMX_MediaProcessorElement(QQuickItem* parent = 0);
     ~OMX_MediaProcessorElement();
@@ -54,6 +55,9 @@ public:
 
     bool autoPlay();
     void setAutoPlay(bool autoPlay);
+
+    int getAudioStream();
+    bool setAudioStream(int id);
 
     OMX_MediaProcessor* mediaProcessor() {
         return m_mediaProc;
@@ -75,6 +79,7 @@ signals:
     void textureReady(const OMX_TextureData* textureId);
     void textureInvalidated();
     void sourceChanged(QString filepath);
+    void audioStreamChanged(int newId);
 
     void playbackStarted();
     void playbackCompleted();

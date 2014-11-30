@@ -193,3 +193,25 @@ bool OMX_MediaProcessorElement::openMedia(QString filepath)
 
     return true;
 }
+
+bool OMX_MediaProcessorElement::setAudioStream(int id)
+{
+    int currentStream = m_mediaProc->getAudioStream();
+
+    if (id == currentStream)
+        return true;
+
+    if (m_mediaProc->setAudioStream(id))
+    {
+        emit audioStreamChanged(id);
+        return true;
+    }
+
+    return false;
+}
+
+int OMX_MediaProcessorElement::getAudioStream()
+{
+    return m_mediaProc->getAudioStream();
+}
+

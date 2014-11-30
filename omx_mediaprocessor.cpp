@@ -1132,3 +1132,26 @@ qint64 OMX_MediaProcessor::streamLength()
       return -1;
    return m_omx_reader->GetStreamLength();
 }
+
+
+
+/*------------------------------------------------------------------------------
+|    OMX_MediaProcessor::setAudioStream
++-----------------------------------------------------------------------------*/
+bool OMX_MediaProcessor::setAudioStream(int id)
+{
+   if (!m_omx_reader)
+     return false;
+
+   LOG_INFORMATION(LOG_TAG, "Setting Audio Track to %d", id);
+   return m_omx_reader->SetActiveStream(OMXSTREAM_AUDIO, id);
+}
+
+
+/*------------------------------------------------------------------------------
+|    OMX_MediaProcessor::getAudioStream
++-----------------------------------------------------------------------------*/
+int OMX_MediaProcessor::getAudioStream()
+{
+   return m_omx_reader->GetAudioIndex();
+}

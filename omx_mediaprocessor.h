@@ -121,6 +121,9 @@ public:
     void setMute(bool muted);
     bool muted();
 
+    bool setAudioStream(int id);
+    int getAudioStream();
+
     QVariantMap getMetaData();
 
 public slots:
